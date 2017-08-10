@@ -1,0 +1,89 @@
+body{
+	/*background-image: url('../eclipse-map.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position-y: -60px;
+	min-height: 1300px;*/
+}
+
+h1{
+	font-size: 50px;
+}
+
+p{
+	font-size: 20px;
+}
+/* Navbar section */
+.navbar{
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+/* Hero section */
+#heroUnit{
+	background-image: url('../images/main-image.jpg');
+	background-repeat: no-repeat;
+	background-position-x: center;
+	min-height: 500px;
+	text-align: center;
+}
+
+#heroContent{
+	color: white;
+	margin-top: 15%;
+	font-family: monospace;
+}
+
+#heroContent{}
+
+/* Scroll section */
+#homeBanner{
+	text-align: center;
+	/*background-image: url('../images/1.jpg');*/
+	background-repeat: no-repeat;
+	height: 300px;
+}
+
+#homeBanner .fa-hand-rock-o{
+	font-size: 50px;
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+    color: black;
+}
+
+#homeBanner .homeBannerText{
+	color: grey;
+	margin-top: 80px;
+	font-family: monospace;
+}
+
+.homeBannerText h1{
+	margin: 0px;
+}
+
+/* WhatWeDo section */
+
+#whatWeDo{
+	background-color: darkgray;
+}
+
+.whatWeDoItem{
+	background: transparent;
+}
+
+
+/* Footer section */
+.footerBox{
+	min-height: 150px;
+	text-align: center;
+}
+
+.redBox{
+	background-color: antiquewhite;
+}
+
+.blueBox{
+	background-color: lightblue;
+}
