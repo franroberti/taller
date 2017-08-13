@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const saveData = (params) => {
+export const saveData = (datos) => {
    return  fetch('http://localhost:4000/clients', {
         method: 'POST',
         headers: {
@@ -8,12 +8,12 @@ export const saveData = (params) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: 'yourValue',
-            email: 'yourOtherValue',
-            genre: 'male'
-        })
+        body: JSON.stringify(datos)
     }
-   )
+   ).catch((e)=>{
+        throw Error("No se pudieron guardar datos en la API");
+   })
+
+
 
 }
