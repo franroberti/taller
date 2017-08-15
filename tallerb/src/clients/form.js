@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {saveData} from "./saveData"
+import {saveData} from "./saveData";
 
 export class ClientsForm extends Component{
     state= {
@@ -18,10 +18,10 @@ export class ClientsForm extends Component{
         };
         saveData(data)
             .then(()=> {
-                this.showTempMessage("Ok amio");
+                this.showTempMessage("Ok");
                 this.resetForm();
             })
-            .catch((e)=> this.showTempMessage('Rompi todo amio '+e))
+            .catch((e)=> this.showTempMessage("Rompi todo amio",e))
     };
 
     showTempMessage = (message) => {
@@ -49,18 +49,19 @@ export class ClientsForm extends Component{
         return(
             <div className="clientsForm">
                 <form onSubmit={this.handleSubmit}>
-                    <input name="name" placeholder="Name" type="text" value={this.state.name} onChange={this.handleInputChange}/>
-                    <input name="email" placeholder="Email" type="email" value={this.state.email}  onChange={this.handleInputChange}/>
-                    <select name="genre" id="genre" onChange={this.handleInputChange} value={this.state.genre}>
-                        <option value="" >Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                    <p>{this.state.message}</p>
-                    <p>{this.state.name}</p>
+                    <div className="form-group col-md-4 col-md-offset-4">
+                        <input className="form-control" name="name" placeholder="Name" type="text" value={this.state.name} onChange={this.handleInputChange}/>
+                        <input className="form-control"  name="email" placeholder="Email" type="email" value={this.state.email}  onChange={this.handleInputChange}/>
+                        <select className="form-control"  name="genre" id="genre" onChange={this.handleInputChange} value={this.state.genre}>
+                            <option value="" >Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
 
-                    <button type="submit">Submit</button>
+                        <p>{this.state.message}</p>
+                        <button className="btn btn-primary" type="submit">Submit</button>
 
+                    </div>
                 </form>
             </div>
         )
