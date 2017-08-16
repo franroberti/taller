@@ -2,15 +2,16 @@ import React from 'react';
 import {combineReducers} from 'redux';
 import {filter} from './filters';
 import {clients} from './clients';
+import {messages} from './messages';
 import {createStore} from 'redux';
-import {Router, Route} from 'react-router';
 
 
 
 
 export const reducers = combineReducers({
     filter,
-    clients
+    clients,
+    messages
 });
 
 export const store = createStore(reducers);

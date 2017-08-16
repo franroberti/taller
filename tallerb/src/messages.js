@@ -1,28 +1,14 @@
-import React,{Component} from 'react';
+import React from 'react';
+import {connect} from 'react-redux'
 
 
 
 
-export class TempMessage extends Component{
+export const Message = ({messages}) => (
+    messages ? <div className="alert alert-danger" role="alert">{messages}</div> : null
 
-    state = {
-        message: this.props.children
-    };
+);
 
-    componentDidMount() {
-        this.setState({
-            message: this.props.children
-        });
-        setTimeout(()=>this.setState({
-            message: ''
-        }),3000);
-    }
-
-    render(){
-        if (!this.state.message) {
-            return null
-        }
-        return <div className="alert alert-danger" role="alert">{this.state.message}</div>
-    }
-
-}
+export default connect(
+    (state) => ({messages: state.messages})
+)(Message)

@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import {saveData} from "./saveData";
+import {Message} from "../messages";
+import {showMessage} from "../reducers/messages";
+import {store} from "../reducers/configureStore";
 
 export class ClientsForm extends Component{
     state= {
         name: '',
         email: '',
-        genre: ''
+        genre: '',
+        message: this.props.message
     };
     baseState = this.state;
 
@@ -21,17 +25,18 @@ export class ClientsForm extends Component{
                 this.showTempMessage("Ok");
                 this.resetForm();
             })
-            .catch((e)=> this.showTempMessage("Rompi todo amio",e))
+            .catch((e)=> this.showTempMessage("-",e))
     };
 
     showTempMessage = (message) => {
         this.setState({
-            message: message
+            message: 'error'
         });
         setTimeout(()=>this.setState({
             message: ''
         }),3000);
     };
+
 
     handleInputChange = (e)=>{
         this.setState({
@@ -57,8 +62,7 @@ export class ClientsForm extends Component{
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
-
-                        <p>{this.state.message}</p>
+                        <Message/>
                         <button className="btn btn-primary" type="submit">Submit</button>
 
                     </div>
