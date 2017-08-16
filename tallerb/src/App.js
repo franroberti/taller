@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import {ClientsForm} from './clients/form';
-import {NavBar} from "./navbar";
+import ClientsForm from './clients/form';
+import NavBar from "./navbar";
 
 
 
@@ -11,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar/>
-        <ClientsForm/>
+        <ClientsForm />
       </div>
     );
   }

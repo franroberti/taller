@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 
 
-export class NavBar extends Component{
+export default class NavBar extends Component{
     render(){
         return (
             <nav className="navbar navbar-default navbar-static-top">
@@ -11,7 +11,7 @@ export class NavBar extends Component{
                     <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span className="sr-only">Toggle navigation</span>
                     </button>
-                    <a className="navbar-brand" href="#">React</a>
+                    <a className="navbar-brand" href="/">React</a>
                 </div>
                     <ul className="nav navbar-nav">
                         <li><a href="home">Home</a></li>

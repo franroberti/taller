@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {saveData} from "./saveData";
-import {Message} from "../messages";
+import Message from "../messages";
 import {showMessage} from "../reducers/messages";
-import {store} from "../reducers/configureStore";
+import {store} from "../reducers/configureStore"
 
-export class ClientsForm extends Component{
+export default class ClientsForm extends Component{
     state= {
         name: '',
         email: '',
         genre: '',
-        message: this.props.message
     };
     baseState = this.state;
 
@@ -28,15 +27,11 @@ export class ClientsForm extends Component{
             .catch((e)=> this.showTempMessage("-",e))
     };
 
-    showTempMessage = (message) => {
-        this.setState({
-            message: 'error'
-        });
-        setTimeout(()=>this.setState({
-            message: ''
-        }),3000);
+    showTempMessage = (msg) => {
+        setTimeout(store.dispatch(showMessage('')),400);
+        store.dispatch(showMessage(msg));
+        console.log(store.getState());
     };
-
 
     handleInputChange = (e)=>{
         this.setState({
@@ -71,6 +66,7 @@ export class ClientsForm extends Component{
         )
 
     }
-
 }
+
+
 

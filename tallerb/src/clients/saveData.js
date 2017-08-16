@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const saveData = (datos) => {
    return  fetch('http://localhost:4000/clients', {
         method: 'POST',
@@ -13,7 +11,4 @@ export const saveData = (datos) => {
    ).catch((e)=>{
         throw Error("No se pudieron guardar datos en la API");
    })
-
-
-
-}
+};
