@@ -1,17 +1,18 @@
-import {combineReducers} from 'redux';
+import {combineReducers,applyMiddleware} from 'redux';
 import {messages} from './messages';
+import {clients} from "./clients";
 import {createStore} from 'redux';
+import thunk from 'redux-thunk';
 
 
 
 
 export const reducers = combineReducers({
-    messages
+    messages,clients
 });
 
-export const store = createStore(reducers);
+export const store = createStore(reducers, applyMiddleware(thunk));
 
-console.log('State:',store.getState());
 
 
 

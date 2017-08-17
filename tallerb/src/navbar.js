@@ -14,7 +14,7 @@ export default class NavBar extends Component{
                     <a className="navbar-brand" href="/">React</a>
                 </div>
                     <ul className="nav navbar-nav">
-                        <li><NavLink exact  to="/">Home</NavLink></li>
+                        <li><NavLink exact  to="/">Clients</NavLink></li>
                         <li><NavLink  to="/add-client">Add Client</NavLink></li>
                     </ul>
                 </div>

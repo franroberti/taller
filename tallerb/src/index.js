@@ -5,6 +5,7 @@ import {Route} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
 import NavBar from "./navbar";
 import ClientsForm from './clients/form';
+import ClientsList from './clients/list';
 import registerServiceWorker from './registerServiceWorker';
 import {store} from "./reducers/configureStore"
 
@@ -16,7 +17,7 @@ const Root = () => (
         <BrowserRouter>
             <div>
                 <NavBar/>
-                <Route exact path="/" component={ClientsForm}/>
+                <Route exact path="/" component={ClientsList}/>
                 <Route exact path="/add-client" component={ClientsForm}/>
             </div>
         </BrowserRouter>

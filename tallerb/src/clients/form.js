@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {saveData} from "./saveData";
+import {saveClient} from "./server";
 import Message from "../messages";
 import {showMessage} from "../reducers/messages";
 import {store} from "../reducers/configureStore"
@@ -19,7 +19,7 @@ export default class ClientsForm extends Component{
             email: this.state.email,
             genre: this.state.genre
         };
-        saveData(data)
+        saveClient(data)
             .then(()=> {
                 this.showTempMessage("Ok");
                 this.resetForm();
