@@ -32,4 +32,4 @@ export const showMessage = (msg, error=false) => {
 
 export const clearMessages =  () => {
     return {type: CLEAR_MESSAGES, payload:''}
-}
+};

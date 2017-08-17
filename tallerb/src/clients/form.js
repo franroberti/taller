@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {saveData} from "./saveData";
 import Message from "../messages";
 import {clearMessages, showMessage} from "../reducers/messages";
+import {handleInputChange} from "../reducers/clientsForm";
 import {connect} from 'react-redux';
 
 
@@ -69,7 +70,7 @@ class ClientsForm extends Component{
 }
 
 const mapStateToProps = (state) => (state);
-const mapDispatchToProps = {showMessage,clearMessages};
+const mapDispatchToProps = {showMessage,clearMessages,handleInputChange};
 const ConnectedClientsForm = connect(mapStateToProps,mapDispatchToProps)(ClientsForm);
 export default ConnectedClientsForm;
 
