@@ -10,6 +10,10 @@ import registerServiceWorker from './registerServiceWorker';
 import {store} from "./reducers/configureStore"
 
 
+<<<<<<< HEAD
+=======
+ReactDOM.render(<Root store={store}/>,document.getElementById('root'));
+>>>>>>> b07c2f36896c1d84695955d9c82727000e0dc680
 
 
 const Root = () => (

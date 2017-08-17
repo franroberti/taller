@@ -2,12 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 const  Message = ({successMessage, errorMessage}) => {
-   if(errorMessage) {
-       return <div className="alert alert-danger" role="alert">{errorMessage}</div>
-   }
-   if(successMessage){
-       return <div className="alert alert-success" role="alert">{successMessage}</div>
-   }
+    const type = errorMessage ? 'danger' : 'success';
+    if(successMessage || errorMessage){
+        return <div className={"alert alert-"+type} role="alert">{errorMessage}</div>;
+    }
    return null;
 };
 

@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {saveClient} from "./server";
 import Message from "../messages";
-import {showMessage} from "../reducers/messages";
-import {store} from "../reducers/configureStore"
+import {clearMessages, showMessage} from "../reducers/messages";
+import {handleInputChange} from "../reducers/clientsForm";
+import {connect} from 'react-redux';
 
-export default class ClientsForm extends Component{
+
+class ClientsForm extends Component{
     state= {
         name: '',
         email: '',
@@ -24,22 +26,21 @@ export default class ClientsForm extends Component{
                 this.showTempMessage("Ok");
                 this.resetForm();
             })
-            .catch((e)=> this.showTempMessage("-",e))
+            .catch((e)=>this.showTempMessage("-"+e,true));
     };
 
-    showTempMessage = (msg) => {
-        setTimeout(store.dispatch(showMessage('')),400);
-        store.dispatch(showMessage(msg));
-        console.log(store.getState());
-    };
+    showTempMessage(msg, isError = false){
+        this.props.showMessage(msg,isError);
+        setTimeout(this.props.clearMessages,3000);
+    }
+
+
 
     handleInputChange = (e)=>{
         this.setState({
             [e.target.name]: e.target.value
-
         })
     };
-
 
     resetForm = ()=> {
         this.setState(this.baseState);
@@ -68,5 +69,9 @@ export default class ClientsForm extends Component{
     }
 }
 
+const mapStateToProps = (state) => (state);
+const mapDispatchToProps = {showMessage,clearMessages,handleInputChange};
+const ConnectedClientsForm = connect(mapStateToProps,mapDispatchToProps)(ClientsForm);
+export default ConnectedClientsForm;
 
 
