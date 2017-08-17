@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {saveData} from "./saveData";
 import Message from "../messages";
 import {clearMessages, showMessage} from "../reducers/messages";
-import {store} from "../reducers/configureStore";
+import {connect} from 'react-redux';
 
-export default class ClientsForm extends Component{
+
+class ClientsForm extends Component{
     state= {
         name: '',
         email: '',
@@ -27,9 +28,9 @@ export default class ClientsForm extends Component{
             .catch((e)=>this.showTempMessage("-"+e,true));
     };
 
-    showTempMessage(msg, error = false){
-        store.dispatch(showMessage(msg,error));
-        setTimeout(()=> store.dispatch(clearMessages()),3000);
+    showTempMessage(msg, isError = false){
+        this.props.showMessage(msg,isError);
+        setTimeout(this.props.clearMessages,3000);
     }
 
 
@@ -37,10 +38,8 @@ export default class ClientsForm extends Component{
     handleInputChange = (e)=>{
         this.setState({
             [e.target.name]: e.target.value
-
         })
     };
-
 
     resetForm = ()=> {
         this.setState(this.baseState);
@@ -69,5 +68,9 @@ export default class ClientsForm extends Component{
     }
 }
 
+const mapStateToProps = (state) => (state);
+const mapDispatchToProps = {showMessage,clearMessages};
+const ConnectedClientsForm = connect(mapStateToProps,mapDispatchToProps)(ClientsForm);
+export default ConnectedClientsForm;
 
 
