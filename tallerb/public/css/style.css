@@ -5,3 +5,7 @@
   margin: 20px 0;
   height: 40px;
 }
+
+.navbar li a.active{
+  background-color: #e7e7e7;
+}

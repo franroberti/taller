@@ -1,34 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import {Route} from 'react-router';
+import {BrowserRouter} from 'react-router-dom';
+import NavBar from "./navbar";
+import ClientsForm from './clients/form';
 import registerServiceWorker from './registerServiceWorker';
-import Root from './root'
 import {store} from "./reducers/configureStore"
 
 
-const render=() =>{
-    ReactDOM.render(<Root store={store}/>,document.getElementById('root'));
-
-};
-
-store.subscribe(render);
 
 
-
-render();
-
-
-const state = () =>{
-    console.log('State:',store.getState());
-};
-
-store.subscribe(state);
-//setTimeout(state, 4000);
+const Root = () => (
+    <Provider store={store}>
+        <BrowserRouter>
+            <div>
+                <NavBar/>
+                <Route exact path="/" component={ClientsForm}/>
+                <Route exact path="/add-client" component={ClientsForm}/>
+            </div>
+        </BrowserRouter>
+    </Provider>
+);
 
 
 
-
+ReactDOM.render(<Root/>,document.getElementById('root'));
 
 
 registerServiceWorker();
+
 
 
