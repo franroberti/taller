@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {saveData} from "./saveData";
 import Message from "../messages";
-import {showMessage} from "../reducers/messages";
-import {store} from "../reducers/configureStore"
+import {clearMessages, showMessage} from "../reducers/messages";
+import {store} from "../reducers/configureStore";
 
 export default class ClientsForm extends Component{
     state= {
@@ -24,14 +24,15 @@ export default class ClientsForm extends Component{
                 this.showTempMessage("Ok");
                 this.resetForm();
             })
-            .catch((e)=> this.showTempMessage("-",e))
+            .catch((e)=>this.showTempMessage("-"+e,true));
     };
 
-    showTempMessage = (msg) => {
-        setTimeout(store.dispatch(showMessage('')),400);
-        store.dispatch(showMessage(msg));
-        console.log(store.getState());
-    };
+    showTempMessage(msg, error = false){
+        store.dispatch(showMessage(msg,error));
+        setTimeout(()=> store.dispatch(clearMessages()),3000);
+    }
+
+
 
     handleInputChange = (e)=>{
         this.setState({
