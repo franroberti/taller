@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import {saveClient} from "./server";
 import Message from "../messages";
 import {clearMessages, showMessage} from "../reducers/messages";
-import {handleInputChange} from "../reducers/clientsForm";
 import {connect} from 'react-redux';
+import {store} from "../reducers/configureStore";
+
 
 
 class ClientsForm extends Component{
     state= {
         name: '',
         email: '',
-        genre: '',
+        tel: '',
     };
     baseState = this.state;
 
@@ -19,14 +20,15 @@ class ClientsForm extends Component{
         let data = {
             name: this.state.name,
             email: this.state.email,
-            genre: this.state.genre
+            tel: this.state.tel
         };
         saveClient(data)
             .then(()=> {
-                this.showTempMessage("Ok");
+                this.showTempMessage("Guardado correctamente");
                 this.resetForm();
+                console.log(store.getState());
             })
-            .catch((e)=>this.showTempMessage("-"+e,true));
+            .catch((e)=>this.showTempMessage(''+e,true));
     };
 
     showTempMessage(msg, isError = false){
@@ -53,14 +55,9 @@ class ClientsForm extends Component{
                     <div className="form-group col-md-4 col-md-offset-4">
                         <input className="form-control" name="name" placeholder="Name" type="text" value={this.state.name} onChange={this.handleInputChange}/>
                         <input className="form-control"  name="email" placeholder="Email" type="email" value={this.state.email}  onChange={this.handleInputChange}/>
-                        <select className="form-control"  name="genre" id="genre" onChange={this.handleInputChange} value={this.state.genre}>
-                            <option value="" >Select</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
+                        <input className="form-control"  name="tel" placeholder="Telefono" type="text" value={this.state.tel}  onChange={this.handleInputChange}/>
                         <Message/>
                         <button className="btn btn-primary" type="submit">Submit</button>
-
                     </div>
                 </form>
             </div>
@@ -70,7 +67,7 @@ class ClientsForm extends Component{
 }
 
 const mapStateToProps = (state) => (state);
-const mapDispatchToProps = {showMessage,clearMessages,handleInputChange};
+const mapDispatchToProps = {showMessage,clearMessages};
 const ConnectedClientsForm = connect(mapStateToProps,mapDispatchToProps)(ClientsForm);
 export default ConnectedClientsForm;
 

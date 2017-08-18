@@ -1,8 +1,8 @@
 import {getClients} from "../clients/server";
-
+import {showMessage} from "./messages";
 const LOAD_CLIENTS = 'LOAD_CLIENTS';
 
-const initialState = [{_id:1, name: 'mariano', email: 'n'},{_id:2, name: 'mariano2', email: 'n2'}];
+const initialState = [];
 
 export const clients = (state = initialState, action) => {
     switch (action.type){
@@ -24,6 +24,8 @@ export const fetchClients = () =>{
                 return response
             }).then((clients) =>{
                 dispatch(loadClients(clients));
-            });
+            }).catch(dispatch(showMessage("No se pudieron cargar los datos", true)));
     };
 };
+
+

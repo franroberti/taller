@@ -11,11 +11,11 @@ let initialState = {
 export const  messages = (state = initialState, action) =>{
     switch (action.type){
         case SUCCESS_MESSAGE:
-            return {...state, successMessage: action.payload};
+            return {successMessage: action.payload, errorMessage: ''};
         case ERROR_MESSAGE:
-            return {...state,  errorMessage: action.payload};
+            return {errorMessage: action.payload, successMessage: ''};
         case CLEAR_MESSAGES:
-            return {...state, errorMessage: '', successMessage: ''};
+            return {errorMessage: '', successMessage: ''};
         default:
             return state
     }
@@ -26,7 +26,6 @@ export const  messages = (state = initialState, action) =>{
 export const showMessage = (msg, error=false) => {
     let messageType = error ? ERROR_MESSAGE : SUCCESS_MESSAGE;
     return {type: messageType, payload: msg};
-
 };
 
 

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Message from '../messages';
 import {fetchClients} from "../reducers/clients";
 import {connect} from 'react-redux';
+import Table from './clientsTable';
+
 class ClientsList extends Component {
 
     componentDidMount(){
@@ -9,14 +10,7 @@ class ClientsList extends Component {
     }
 
     render() {
-        if (this.props.clients) {
-            return (<ul>
-                {this.props.clients.map((client) => (
-                    <li key={client._id}>{client.name} - {client.email}</li>
-                ))}
-            </ul>);
-        }
-        return <Message/>;
+        return (<Table/>);
     }
 }
 
