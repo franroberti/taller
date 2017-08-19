@@ -11,11 +11,12 @@ export default class NavBar extends Component{
                     <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span className="sr-only">Toggle navigation</span>
                     </button>
-                    <a className="navbar-brand" href="/">React</a>
+                    <a className="navbar-brand" href="/">Taller</a>
                 </div>
                     <ul className="nav navbar-nav">
-                        <li><NavLink exact  to="/">Clients</NavLink></li>
-                        <li><NavLink  to="/add-client">Add Client</NavLink></li>
+                        <li><NavLink exact  to="/">Clientes</NavLink></li>
+                        <li><NavLink  to="/add-client">Agregar cliente</NavLink></li>
+                        <li><NavLink  to="/turnos">Calendario</NavLink></li>
                     </ul>
                 </div>
             </nav>

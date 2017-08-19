@@ -8,6 +8,7 @@ import ClientsForm from './clients/form';
 import ClientsList from './clients/list';
 import registerServiceWorker from './registerServiceWorker';
 import {store} from "./reducers/configureStore"
+import {Calendar} from "./infiniteCalendar";
 
 
 
@@ -19,6 +20,7 @@ const Root = () => (
                 <NavBar/>
                 <Route exact path="/" component={ClientsList}/>
                 <Route exact path="/add-client" component={ClientsForm}/>
+                <Route exact path="/turnos" component={Calendar}/>
             </div>
         </BrowserRouter>
     </Provider>
