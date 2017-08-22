@@ -1,21 +1,18 @@
-const SUCCESS_MESSAGE = 'SUCCESS_MESSAGE';
-const ERROR_MESSAGE = 'ERROR_MESSAGE';
+const SHOW_MESSAGE = 'SUCCESS_MESSAGE';
 const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
-let initialState = {
-    successMessage: '',
-    errorMessage: ''
 
+let initialState = {
+    message: '',
+    error: false
 };
 
 
 export const  messages = (state = initialState, action) =>{
     switch (action.type){
-        case SUCCESS_MESSAGE:
-            return {successMessage: action.payload, errorMessage: ''};
-        case ERROR_MESSAGE:
-            return {errorMessage: action.payload, successMessage: ''};
+        case SHOW_MESSAGE:
+            return {message: action.payload, error: action.error};
         case CLEAR_MESSAGES:
-            return {errorMessage: '', successMessage: ''};
+            return {message: '', error: false};
         default:
             return state
     }
@@ -24,11 +21,10 @@ export const  messages = (state = initialState, action) =>{
 
 
 export const showMessage = (msg, error=false) => {
-    let messageType = error ? ERROR_MESSAGE : SUCCESS_MESSAGE;
-    return {type: messageType, payload: msg};
+    return {type: SHOW_MESSAGE, payload: msg, error: error};
 };
 
 
 export const clearMessages =  () => {
-    return {type: CLEAR_MESSAGES, payload:''}
+    return {type: CLEAR_MESSAGES};
 };

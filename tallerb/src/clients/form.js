@@ -56,7 +56,7 @@ class ClientsForm extends Component{
                         <input className="form-control" name="name" placeholder="Name" type="text" value={this.state.name} onChange={this.handleInputChange}/>
                         <input className="form-control"  name="email" placeholder="Email" type="email" value={this.state.email}  onChange={this.handleInputChange}/>
                         <input className="form-control"  name="tel" placeholder="Telefono" type="text" value={this.state.tel}  onChange={this.handleInputChange}/>
-                        <Message/>
+                        <Message message={this.props.message} isError={false}/>
                         <button className="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </form>
@@ -66,7 +66,7 @@ class ClientsForm extends Component{
     }
 }
 
-const mapStateToProps = (state) => (state);
+const mapStateToProps = (state) => ({message: state.messages.message});
 const mapDispatchToProps = {showMessage,clearMessages};
 const ConnectedClientsForm = connect(mapStateToProps,mapDispatchToProps)(ClientsForm);
 export default ConnectedClientsForm;
